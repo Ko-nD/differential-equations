@@ -10,6 +10,7 @@ def Euler_solution(func, a, b, y0, num_steps, mean_variance=False):
     b - const - end of the interval 
     y0 - const - initial condition of Koshi task
     num_steps - const - number of steps
+    mean_variance (optional) - bool - flag for showing meen variance between exact func and solution 
 
     return: x_range, y_range - nd.array - arrays of values of a solved differential equation
     '''
@@ -36,6 +37,7 @@ def Euler_Koshi_solution(func, a, b, y0, num_steps, mean_variance=False):
     b - const - end pf the interval 
     y0 - const - initial condition of Koshi task
     num_steps - const - number of steps
+    mean_variance (optional) - bool - flag for showing meen variance between exact func and solution 
 
     return: nd.array - an array of values of a solved differential equation
     '''
@@ -65,6 +67,7 @@ def Runge_Kutta_solution(func, a, b, y0, num_steps, mean_variance=False):
     b - const - end pf the interval 
     y0 - const - initial condition of Koshi task
     num_steps - const - number of steps
+    mean_variance (optional) - bool - flag for showing meen variance between exact func and solution 
 
     return: nd.array - an array of values of a solved differential equation
     '''
