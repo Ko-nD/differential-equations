@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt 
 from methods import *
 
+
 def get_func():
     '''
-    gets funtcion from terminal 
+    gets funcеion from terminal 
     return: lambda function 
     '''
     str_func = 'lambda ' + input('Введите зависимые переменные через запятую:\n') + ': ' + input('Введите функцию:\n')
@@ -11,16 +12,13 @@ def get_func():
     for change in changes:
         str_func = str_func.replace(change, changes[change])
     
-    try:
-        return eval(str_func)
-    except:
-        print("Функция введена неправильно или же не поддерживается.\nПопробуйте ввести базовые математические функции добавив 'np.'")
+    return eval(str_func)
 
 
-def get_params_and_solve_equation():
+def get_params():
     '''
-    gets params and returns solution
-    return: x_range, y_range - nd.array - arrays of values of a solved differential equation
+    gets parameters from terminal
+    return: list of parameters
     '''
     func = get_func()
     a = float(input('Введите начало интервала:\n'))
@@ -29,14 +27,24 @@ def get_params_and_solve_equation():
     num_steps = int(input('Введите желаемое кол-во шагов:\n'))
     method = int(input('Выберите желаемый метод решения:\n1 - метод Эйлера\n2 - метод Эйлера-Коши\n3 - метод Рунге-Кутты\n'))
     mean_variance = int(input('Вывести среднее отклонение?\n1 - да\n2 - нет\n'))
-    if method == 1:
-        return Euler_solution(func, a, b, y0, num_steps, mean_variance)
-    if method == 2:
-        return Euler_Koshi_solution(func, a, b, y0, num_steps, mean_variance)
-    if method == 3: 
-        return Runge_Kutta_solution(func, a, b, y0, num_steps, mean_variance)
-    else: 
-        print('Выбранный метод не поддерживается, всего доброго!')
+    return (func, a, b, y0, num_steps, method, mean_variance)
+
+def solve_equation():
+    '''
+    solves equation and gets parameters from terminal
+    return: np.array, np.array -  solution in the form of a list of arguments(x_range) and values(y_range)
+    '''
+    params = get_params()
+    method = params[5]
+    try: 
+        if method == 1:
+            return Euler_solution(*params)
+        if method == 2:
+            return Euler_Koshi_solution(*params)
+        if method == 3: 
+            return Runge_Kutta_solution(*params)
+    except:
+        print('Посчитать не удалось, но вы не расстраивайтесь :)')
 
 
 def show(x_range, y_range, label='unknown', color='blue'):
