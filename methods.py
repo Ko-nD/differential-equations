@@ -52,7 +52,7 @@ def Euler_Koshi_solution(func, a, b, y0, num_steps, mean_variance=False):
         y_range[i + 1] = y_i + \
                 h * (func_x_y + func(x_range[i + 1], y_i +  h * func_x_y)) / 2
 
-    if mean_variance:
+    if mean_variance == 1:
         calc_mean_variance(func, x_range, y_range)
 
     return x_range, y_range
