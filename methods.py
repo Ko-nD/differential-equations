@@ -94,13 +94,13 @@ def Runge_Kutta_solution(func, a, b, y0, num_steps, mean_variance=False):
 
 def calc_mean_variance(func, x_range, y_range):
     '''
-    calculate and print mean variance between func and y_range
+    calculate and print mean variance between derivative of func and y_range on the interval x_range
     params:
     func - lambda function
     x_range - nd.array of x values
     y_range - nd.array of y values
     '''
-    # производная методом конечных разностей
+    # производная методом правосторонней разности
     diff = (y_range[1::] - y_range[0:-1:]) / (x_range[1] - x_range[0])
     # вывод средней разности 
     print('Среднее отклонение: ', round(np.sum(abs(diff - func(x_range, y_range)[1::])), 2))
