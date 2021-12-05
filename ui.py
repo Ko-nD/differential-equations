@@ -45,6 +45,7 @@ def solve_equation():
             return Runge_Kutta_solution(*params)
     except:
         print('Посчитать не удалось, но вы не расстраивайтесь :)')
+        return None
 
 
 def show(x_range, y_range, label='unknown', color='blue'):
