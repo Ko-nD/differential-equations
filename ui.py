@@ -7,7 +7,7 @@ def get_func():
     gets funcеion from terminal 
     return: lambda function 
     '''
-    str_func = 'lambda ' + input('Введите зависимые переменные через запятую:\n') + ': ' + input('Введите функцию:\n')
+    str_func = 'lambda ' + input('Введите зависимые переменные через запятую (x - первым):\n') + ': ' + input('Введите функцию:\n')
     changes = {'cos': 'np.cos', 'sin': 'np.sin', 'exp':'np.exp', 'tan':'np.tg', 'cot': 'np.cot', 'log': 'np.log'}
     for change in changes:
         str_func = str_func.replace(change, changes[change])
